@@ -27,7 +27,6 @@ enum States {
 
 byte state;
 bool neighbors[6];
-byte neighborValues[6];
 bool isEndPiece;
 
 bool endPiece[6] = {1, 0, 0, 0, 0, 0};
@@ -46,10 +45,6 @@ void loop() {
   // check neighbors
   FOREACH_FACE(f) {
     neighbors[f] = !isValueReceivedOnFaceExpired(f);  // store if the neighbor is present
-
-    if (neighbors[f]) {
-      neighborValues[f] = getLastValueReceivedOnFace(f);  // store the neighbor's value
-    }
   }
 
   state = getState();
